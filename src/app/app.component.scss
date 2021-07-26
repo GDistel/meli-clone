@@ -1,0 +1,18 @@
+.logo {
+    display: block;
+    width: 60px;
+}
+
+.navigation {
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+
+    .navigation-search-box {
+        max-width: 75%;
+    }
+
+}
