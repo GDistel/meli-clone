@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'meli-clone';
+  title = 'Meli clone';
+  searchTerm!: string;
+
+  onSearch(searchTerm: string): void {
+    this.searchTerm = searchTerm;
+  }
 }

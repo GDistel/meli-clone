@@ -1,5 +1,7 @@
 <nav class="navigation u-background-primary">
   <img src="assets/meli_logo.jpeg" alt="Client logo" class="logo">
-  <app-search-box class="navigation-search-box"></app-search-box>
+  <app-search-box
+    class="navigation-search-box" (search)="onSearch($event)">
+  </app-search-box>
 </nav>
 <router-outlet></router-outlet>
