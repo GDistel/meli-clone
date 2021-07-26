@@ -1,0 +1,22 @@
+.product {
+    padding: 8px;
+    height: 106px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid #B6B6B6;
+    .product-info {
+        display: flex;
+        .product-info-price {
+            display: inline-block;
+            margin: 0;
+            margin-bottom: 8px;
+        }
+        .product-img {
+            margin-right: 16px;
+        }
+    }
+    .product-location {
+        color: gray;
+    }
+}

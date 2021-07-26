@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Meli clone';
-  searchTerm!: string;
+
+  constructor(private router: Router) {}
 
   onSearch(searchTerm: string): void {
-    this.searchTerm = searchTerm;
+    this.router.navigate(['items'], { queryParams: { search: searchTerm } });
   }
+
 }

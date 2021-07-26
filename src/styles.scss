@@ -3,6 +3,9 @@ $primary-color: #fff159;
 
 html, body {
     margin: 0;
+    // font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+    box-sizing: border-box;
+    background-color: lightgray;
 }
 
 .u-background-primary {

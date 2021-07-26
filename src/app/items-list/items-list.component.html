@@ -1,2 +1,12 @@
 <p>items-list works!</p>
+<p>{{search}}</p>
 <button routerLink="1">details</button>
+
+<div class="products">
+    <app-product *ngFor="let item of [1,2,3,4]" [product]="{
+        price: 18890,
+        title: 'Awesome product',
+        location: 'Capital Federal',
+        thumbnail: 'https://via.placeholder.com/90'
+    }"></app-product>
+</div>
