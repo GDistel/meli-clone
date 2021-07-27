@@ -1,10 +1,11 @@
 <div class="product">
     <figure class="product-info">
-        <img src="{{ product.thumbnail }}" alt="Product image" class="product-img">
+        <img src="{{ product.picture }}" alt="Product image" class="product-img">
         <div>
-            <h2 class="product-info-price">$ {{ product.price }}</h2>
+            <h2 class="product-info-price">$ {{ product.price.amount }}</h2>
             <figcaption class="product-info-title">{{ product.title }}</figcaption>
         </div>
     </figure>
-    <h5 class="product-location">{{ product.location }}</h5>
+    <!-- <h5 class="product-location">{{ product.location }}</h5> -->
+    <h5 class="product-location">Capital federal</h5>
 </div>

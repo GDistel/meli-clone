@@ -44,5 +44,5 @@ function getCategoryNamesByResultsRelevance(availableCategories: ICategory[]): s
 
 function getCategoriesFromAvailableFilters(availableFilters: any): ICategory[] {
     const categoryFilter = availableFilters.find((filter: any) => filter.id === 'category');
-    return categoryFilter.values;
+    return categoryFilter?.values || [];
 }
