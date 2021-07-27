@@ -11,6 +11,7 @@ import { ApiService } from '../core/api.service';
 export class ItemsListComponent implements OnInit {
   search!: string;
   items!: IItem[];
+  categories!: string[];
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService) { }
 
@@ -22,6 +23,7 @@ export class ItemsListComponent implements OnInit {
     });
     const response = await this.apiService.getItems(this.search);
     this.items = response.items;
+    this.categories = response.categories;
   }
 
 }
