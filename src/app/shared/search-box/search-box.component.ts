@@ -19,4 +19,9 @@ export class SearchBoxComponent {
     this.search.emit(this.searchTerm);
   }
 
+  onFormSubmit(event: Event): void {
+    event.preventDefault();
+    this.onSearch();
+  }
+
 }

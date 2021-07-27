@@ -1,4 +1,4 @@
-<form class="search-box">
+<form class="search-box" (submit)="onFormSubmit($event)">
     <input class="search-box-input" placeholder="Nunca dejes de buscar"
         (keyup)="onSearchTermChanged($event)">
     <button type="button" (click)="onSearch()">Search</button>

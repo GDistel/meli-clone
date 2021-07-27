@@ -12,6 +12,7 @@ export class ItemsListComponent implements OnInit {
   search!: string;
   items!: IItem[];
   categories!: string[];
+  loading = false;
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService) { }
 
@@ -19,11 +20,18 @@ export class ItemsListComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(queryParams => {
       if (queryParams.search) {
         this.search = queryParams.search;
+        this.loading = true;
+        this.getData();
       }
     });
+    await this.getData();
+  }
+
+  async getData(): Promise<void> {
     const response = await this.apiService.getItems(this.search);
     this.items = response.items;
     this.categories = response.categories;
+    this.loading = false;
   }
 
 }
