@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
 import { IItem } from 'server/interfaces';
 import { ApiService } from '../core/api.service';
 
@@ -8,16 +9,17 @@ import { ApiService } from '../core/api.service';
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.scss']
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnDestroy {
   search!: string;
   items!: IItem[];
   categories!: string[];
   loading = false;
+  queryParamsSubscription!: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService) { }
 
   async ngOnInit(): Promise<void> {
-    this.activatedRoute.queryParams.subscribe(queryParams => {
+    this.queryParamsSubscription = this.activatedRoute.queryParams.subscribe(queryParams => {
       if (queryParams.search) {
         this.search = queryParams.search;
         this.loading = true;
@@ -32,6 +34,10 @@ export class ItemsListComponent implements OnInit {
     this.items = response.items;
     this.categories = response.categories;
     this.loading = false;
+  }
+
+  ngOnDestroy(): void {
+    this.queryParamsSubscription.unsubscribe();
   }
 
 }

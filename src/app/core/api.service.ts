@@ -12,4 +12,8 @@ export class ApiService {
     return this.http.get<any>(`/api/items?searchTerm=${searchTerm}`).toPromise();
   }
 
+  getItemById(id: string): Promise<any> {
+    return this.http.get<any>(`/api/items/${id}`).toPromise();
+  }
+
 }

@@ -4,7 +4,7 @@
 
 <div *ngIf="items && !loading; else loader" class="products">
     <app-product
-        *ngFor="let item of items; index as i" [product]="item" [routerLink]="i.toString()" class="product">
+        *ngFor="let item of items" [product]="item" [routerLink]="item.id" class="product">
     </app-product>
 </div>
 
