@@ -1,4 +1,4 @@
-<ul class="breadcrumb">
+<ul *ngIf="categories?.length" class="breadcrumb">
     <li *ngFor="let categ of categories.slice(0,4); index as i" class="breadcrumb-item">
         <span *ngIf="i > 0">&nbsp;&#187;</span>
         {{ categ }}

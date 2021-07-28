@@ -1,6 +1,10 @@
 <div class="back-button-container">
     <app-back-button route=".."></app-back-button>
 </div>
-<div class="view-container">
-    <pre>{{ item | json }}</pre>
+<div *ngIf="!loading" class="view-container">
+    <app-product-description *ngIf="item; else noItem" [item]="item"></app-product-description>
 </div>
+
+<ng-template #noItem>
+    <p>Algo salió mal, no hemos encontrado el producto buscado</p>
+</ng-template>

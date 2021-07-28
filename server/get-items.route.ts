@@ -27,7 +27,7 @@ function getProcessedItems(items: any[]): IItem[] {
         price: {
             currency: item.currency_id,
             amount: Math.floor(item.price),
-            decimals: +(item.price % 1).toFixed(2)
+            decimals: +(item.price % 1).toFixed(2).substring(2)
         },
         picture: item.thumbnail,
         condition: item.condition,

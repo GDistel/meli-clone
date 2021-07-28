@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/core/api.service';
   styleUrls: ['./item-details.component.scss']
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy {
+  loading = true;
   item!: IItem;
   itemId!: string;
   paramMapSubscription!: Subscription;
@@ -24,7 +25,9 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   }
 
   async getItemById(): Promise<void> {
-    this.item = await this.apiService.getItemById(this.itemId);
+    const res = await this.apiService.getItemById(this.itemId);
+    this.item = res?.item;
+    this.loading = false;
   }
 
   ngOnDestroy(): void {

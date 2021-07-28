@@ -3,7 +3,11 @@ import axios from 'axios';
 import { AUTHOR } from './config';
 
 export async function getItemById(req: Request, res: Response) {
-    const resourceUrl = `https://api.mercadolibre.com/items/${req.params.id}`;
+    const id = req.params.id;
+    if (!id) {
+        return res.status(400).send('Invalid id');
+    }
+    const resourceUrl = `https://api.mercadolibre.com/items/${id}`;
     const meliItemResponse = await axios.get(resourceUrl);
     const meliItemDescriptionResponse = await axios.get(`${resourceUrl}/description`);
     if (!meliItemResponse) {
@@ -21,8 +25,8 @@ function processItemResponse(meliItem: any, meliItemDescription: any) {
             title: meliItem.title,
             price: {
                 currency: meliItem.currency_id,
-                price: Math.floor(meliItem.price),
-                decimals: +(meliItem.price % 1).toFixed(2)
+                amount: Math.floor(meliItem.price),
+                decimals: +(meliItem.price % 1).toFixed(2).substring(2)
             },
             picture: meliItem.thumbnail,
             condition: meliItem.condition,

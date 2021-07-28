@@ -1,0 +1,16 @@
+<div *ngIf="item" class="product-description-container">
+    <div class="product-description">
+        <img [src]="item.picture" alt="Product image" class="product-description-img">
+        <div class="product-description-details">
+            <p>{{ item.condition === 'new' ? 'Nuevo' : item.condition | titlecase }} - {{ item.sold_quantity }} vendidos</p>
+            <h2>{{ item.title }}</h2>
+            <h1 class="price">${{ item.price.currency }} {{ item.price.amount }}
+                <sup *ngIf="item.price.decimals > 0">&nbsp;{{ item.price.decimals }}</sup></h1>
+            <button type="button" class="call-to-action">Comprar</button>
+        </div>
+    </div>
+    <div class="product-description-text">
+        <h2>Descripción del producto</h2>
+        <p>{{ item.description }}</p>
+    </div>
+</div>

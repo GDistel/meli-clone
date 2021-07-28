@@ -5,6 +5,7 @@ import { ProductComponent } from './product/product.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { RouterModule } from '@angular/router';
+import { ProductDescriptionComponent } from './product-description/product-description.component';
 
 
 
@@ -17,14 +18,16 @@ import { RouterModule } from '@angular/router';
     SearchBoxComponent,
     ProductComponent,
     BreadcrumbsComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    ProductDescriptionComponent
   ],
   exports: [
     CommonModule,
     SearchBoxComponent,
     ProductComponent,
     BreadcrumbsComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    ProductDescriptionComponent
   ]
 })
 export class SharedModule { }
