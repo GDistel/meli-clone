@@ -13,7 +13,7 @@ export class BreadcrumbsComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(): void {
-    this.categoryNames = this.categories.map(categ => categ.name).slice(0, 1);
+    this.categoryNames = this.categories?.map(categ => categ.name).slice(0, 1) || [];
   }
 
 }

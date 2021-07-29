@@ -36,6 +36,9 @@ function getProcessedItems(items: any[]): IItem[] {
 }
 
 function getCategoryNamesByResultsRelevance(availableCategories: ICategory[]): ICategory[] {
+    if (availableCategories.length < 2) {
+        return availableCategories;
+    }
     const sortedCategories: ICategory[] = availableCategories.sort(
         (firstCateg: ICategory, secondCateg: ICategory) => secondCateg.results - firstCateg.results
     );
