@@ -30,6 +30,7 @@ function getProcessedItems(items: any[]): IItem[] {
         },
         picture: item.thumbnail,
         condition: item.condition,
+        city: item.address.city_name,
         free_shipping: item.shipping.free_shipping
     }));
 }

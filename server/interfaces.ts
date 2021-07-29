@@ -18,4 +18,5 @@ export interface IItem {
     sold_quantity?: number;
     description?: string;
     category_id?: string;
+    city?: string;
 };;
