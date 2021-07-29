@@ -16,4 +16,8 @@ export class ApiService {
     return this.http.get<any>(`/api/items/${id}`).toPromise();
   }
 
+  getCategoryById(id: string): Promise<any> {
+    return this.http.get<any>(`/api/categories/${id}`).toPromise();
+  }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IItem } from 'server/interfaces';
+import { ICategory, IItem } from 'server/interfaces';
 import { ApiService } from 'src/app/core/api.service';
 import { LoaderService } from 'src/app/shared';
 
@@ -14,6 +14,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   item!: IItem;
   itemId!: string;
   paramMapSubscription!: Subscription;
+  category!: ICategory;
 
   constructor(
     private activatedRoute: ActivatedRoute, private apiService: ApiService,
@@ -32,6 +33,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
     const res = await this.apiService.getItemById(this.itemId);
     this.item = res?.item;
     this.loaderService.loader.next(false);
+    this.category = (await this.apiService.getCategoryById(this.item.category_id as string)) as ICategory;
   }
 
   ngOnDestroy(): void {

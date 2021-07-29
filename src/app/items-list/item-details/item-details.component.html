@@ -2,5 +2,6 @@
     <app-back-button route=".."></app-back-button>
 </div>
 <div class="view-container">
+    <app-breadcrumbs *ngIf="category" [categories]="[category]"></app-breadcrumbs>
     <app-product-description *ngIf="item" [item]="item"></app-product-description>
 </div>
