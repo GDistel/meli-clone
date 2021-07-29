@@ -7,7 +7,7 @@ import { ICategory, IItem } from 'server/interfaces';
 export class StoreService {
   lastSearch!: string;
   lastItems!: IItem[];
-  lastCategories!: ICategory[];
+  lastCategory!: ICategory;
 
   constructor() { }
 

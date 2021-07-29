@@ -14,7 +14,7 @@ import { LoaderService } from '../shared';
 export class ItemsListComponent implements OnInit, OnDestroy {
   search!: string;
   items!: IItem[];
-  categories!: ICategory[];
+  category!: ICategory;
   queryParamsSubscription!: Subscription;
 
   constructor(
@@ -31,7 +31,7 @@ export class ItemsListComponent implements OnInit, OnDestroy {
       if (!searchTerm) {
         this.search = this.store.lastSearch;
         this.items = this.store.lastItems;
-        this.categories = this.store.lastCategories;
+        this.category = this.store.lastCategory;
         return;
       }
       if (this.searchTermIsProductId(searchTerm)) {
@@ -51,8 +51,8 @@ export class ItemsListComponent implements OnInit, OnDestroy {
     const response = await this.apiService.getItems(this.search);
     this.items = response.items;
     this.store.lastItems = this.items;
-    this.categories = response.categories;
-    this.store.lastCategories = this.categories;
+    this.category = response.category;
+    this.store.lastCategory = this.category;
     this.loaderService.loader.next(false);
   }
 

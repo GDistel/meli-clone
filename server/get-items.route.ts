@@ -10,12 +10,11 @@ export async function getAllItems(req: Request, res: Response) {
 }
 
 function processItemsResponse(mlApiResponse: any) {
-    const availableCategories: ICategory[] = getCategoriesFromAvailableFilters(mlApiResponse.data.available_filters);
-    const orderedCategories: ICategory[] = getCategoryNamesByResultsRelevance(availableCategories);
+    const category: ICategory = getCategoryFromAvailableFilters(mlApiResponse.data.filters);
     const processedItems: IItem[] = getProcessedItems(mlApiResponse.data.results.slice(0, MAX_ITEMS));
     return {
         author: AUTHOR,
-        categories: orderedCategories,
+        category: category,
         items: processedItems
     };
 }
@@ -35,17 +34,7 @@ function getProcessedItems(items: any[]): IItem[] {
     }));
 }
 
-function getCategoryNamesByResultsRelevance(availableCategories: ICategory[]): ICategory[] {
-    if (availableCategories.length < 2) {
-        return availableCategories;
-    }
-    const sortedCategories: ICategory[] = availableCategories.sort(
-        (firstCateg: ICategory, secondCateg: ICategory) => secondCateg.results - firstCateg.results
-    );
-    return sortedCategories;
-}
-
-function getCategoriesFromAvailableFilters(availableFilters: any): ICategory[] {
-    const categoryFilter = availableFilters.find((filter: any) => filter.id === 'category');
-    return categoryFilter?.values || [];
+function getCategoryFromAvailableFilters(filters: any): ICategory {
+    const category = filters.find((filter: any) => filter.id === 'category');
+    return category?.values[0] || {} as ICategory;
 }

@@ -7,13 +7,13 @@ import { ICategory } from 'server/interfaces';
   styleUrls: ['./breadcrumbs.component.scss']
 })
 export class BreadcrumbsComponent implements OnChanges {
-  @Input() categories!: ICategory[];
+  @Input() category!: ICategory;
   categoryNames!: string[];
 
   constructor() { }
 
   ngOnChanges(): void {
-    this.categoryNames = this.categories?.map(categ => categ.name).slice(0, 1) || [];
+    this.categoryNames = this.category?.path_from_root?.map(categ => categ.name).slice(0, 4) || [];
   }
 
 }

@@ -1,7 +1,7 @@
 export interface ICategory {
     id: string;
     name: string;
-    results: number;
+    path_from_root?: ICategory[];
 };
 
 export interface IItem {
