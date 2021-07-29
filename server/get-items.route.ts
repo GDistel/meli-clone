@@ -11,7 +11,7 @@ export async function getAllItems(req: Request, res: Response) {
 
 function processItemsResponse(mlApiResponse: any) {
     const availableCategories: ICategory[] = getCategoriesFromAvailableFilters(mlApiResponse.data.available_filters);
-    const orderedCategories: string[] = getCategoryNamesByResultsRelevance(availableCategories);
+    const orderedCategories: ICategory[] = getCategoryNamesByResultsRelevance(availableCategories);
     const processedItems: IItem[] = getProcessedItems(mlApiResponse.data.results.slice(0, MAX_ITEMS));
     return {
         author: AUTHOR,
@@ -35,11 +35,11 @@ function getProcessedItems(items: any[]): IItem[] {
     }));
 }
 
-function getCategoryNamesByResultsRelevance(availableCategories: ICategory[]): string[] {
+function getCategoryNamesByResultsRelevance(availableCategories: ICategory[]): ICategory[] {
     const sortedCategories: ICategory[] = availableCategories.sort(
         (firstCateg: ICategory, secondCateg: ICategory) => secondCateg.results - firstCateg.results
     );
-    return sortedCategories.map(categ => categ.name);
+    return sortedCategories;
 }
 
 function getCategoriesFromAvailableFilters(availableFilters: any): ICategory[] {
