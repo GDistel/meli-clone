@@ -6,6 +6,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 import { RouterModule } from '@angular/router';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -19,7 +20,8 @@ import { ProductDescriptionComponent } from './product-description/product-descr
     ProductComponent,
     BreadcrumbsComponent,
     BackButtonComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    LoaderComponent
   ],
   exports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ProductDescriptionComponent } from './product-description/product-descr
     ProductComponent,
     BreadcrumbsComponent,
     BackButtonComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }

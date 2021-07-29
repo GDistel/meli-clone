@@ -2,12 +2,8 @@
     <app-breadcrumbs [categories]="categories"></app-breadcrumbs>
 </nav>
 
-<div *ngIf="items && !loading; else loader" class="products">
+<div *ngIf="items" class="products">
     <app-product
         *ngFor="let item of items" [product]="item" [routerLink]="item.id" class="product">
     </app-product>
 </div>
-
-<ng-template #loader>
-    <p style="color: white">...loading</p>
-</ng-template>

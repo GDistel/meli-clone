@@ -32,6 +32,7 @@ function processItemResponse(meliItem: any, meliItemDescription: any) {
             condition: meliItem.condition,
             free_shipping: meliItem.shipping?.free_shipping,
             sold_quantity: meliItem.sold_quantity,
+            category_id: meliItem.category_id,
             description: meliItemDescription.plain_text
         }
     };

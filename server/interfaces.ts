@@ -17,4 +17,5 @@ export interface IItem {
     free_shipping: boolean;
     sold_quantity?: number;
     description?: string;
+    category_id?: string;
 };;
